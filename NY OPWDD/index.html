@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="maximus" data-mode="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OPWDD Assessments</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../node_modules/@mms/design-system/dist/styles/tokens-primitives.css">
+<link rel="stylesheet" href="../node_modules/@mms/design-system/dist/styles/tokens-structural.css">
+<link rel="stylesheet" href="../node_modules/@mms/design-system/dist/styles/tokens-semantic.css">
+<link rel="stylesheet" href="../node_modules/@mms/design-system/dist/themes/maximus.css">
+<link rel="stylesheet" href="styles.css?v=1">
+<script type="importmap">
+{
+  "imports": {
+    "lit": "../node_modules/lit/index.js",
+    "lit/": "../node_modules/lit/",
+    "lit-html": "../node_modules/lit-html/lit-html.js",
+    "lit-html/": "../node_modules/lit-html/",
+    "lit-element": "../node_modules/lit-element/index.js",
+    "lit-element/": "../node_modules/lit-element/",
+    "@lit/reactive-element": "../node_modules/@lit/reactive-element/reactive-element.js",
+    "@lit/reactive-element/": "../node_modules/@lit/reactive-element/",
+    "@lit-labs/ssr-dom-shim": "../node_modules/@lit-labs/ssr-dom-shim/index.js",
+    "@lit-labs/ssr-dom-shim/": "../node_modules/@lit-labs/ssr-dom-shim/",
+    "@mms/design-system/components/mms-button": "../node_modules/@mms/design-system/dist/components/button/mms-button.component.js",
+    "@mms/design-system/components/mms-icon": "../node_modules/@mms/design-system/dist/components/icon/mms-icon.component.js",
+    "@mms/design-system/components/mms-link": "../node_modules/@mms/design-system/dist/components/link/mms-link.component.js",
+    "@mms/design-system/components/mms-header": "../node_modules/@mms/design-system/dist/components/header/mms-header.component.js",
+    "/NYOPWDD-demo/node_modules/@mms/design-system/dist/icons/icon-svgs.json": "./icon-svgs-shim.js"
+  }
+}
+</script>
+<script type="module">
+  import '@mms/design-system/components/mms-button';
+  import '@mms/design-system/components/mms-icon';
+  import '@mms/design-system/components/mms-link';
+  import '@mms/design-system/components/mms-header';
+</script>
+<style>
+  /* Homepage-only: marks the Home nav item current, in the theme's primary color.
+     Overrides the header's own --color-link-default/--color-link-hover, which it
+     sets on slotted nav links via ::slotted() — this rule wins on specificity. */
+  mms-link[slot="nav"].nav-current {
+    --color-link-default: var(--color-primary-9);
+    --color-link-hover: var(--color-primary-9);
+  }
+</style>
+</head>
+<body>
+
+<div class="utility-bar">
+  <button type="button" class="utility-bar__lang">
+    Language <mms-icon name="caret-down" size="sm"></mms-icon>
+  </button>
+</div>
+
+<mms-header logo-size="sm" container="content" home-href="index.html" home-label="OPWDD Assessments" home-current>
+  <img slot="logo" src="assets/logo-opwdd.png" alt="New York State Office for People With Developmental Disabilities" class="nav-header__logo">
+  <mms-link slot="nav" href="index.html" label="Home" class="nav-current"></mms-link>
+  <mms-link slot="nav" href="#about-assessments" label="About the assessments"></mms-link>
+  <mms-link slot="nav" href="#get-answers" label="Get answers"></mms-link>
+  <mms-link slot="nav" href="#schedule" label="Schedule an assessment"></mms-link>
+</mms-header>
+
+<div class="hero">
+  <img src="assets/hero-assessments.jpg" alt="OPWDD Assessments" class="hero__img">
+  <h1 class="visually-hidden">OPWDD Assessments</h1>
+</div>
+
+<main class="layout-container">
+  <section class="intro">
+    <h2>We can help you schedule your OPWDD assessment</h2>
+    <p>Schedule an assessment for a day, time, and place that is best for you.</p>
+
+    <div class="contact-row">
+      <div class="contact-item">
+        <span class="contact-item__icon"><mms-icon name="monitor" size="md"></mms-icon></span>
+        <div>
+          <p class="contact-item__label">Schedule an assessment online</p>
+          <a href="form-one.html" class="contact-item__link">Schedule CANS assessment</a>
+          <a href="form-two.html" class="contact-item__link">Schedule CAS assessment</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <span class="contact-item__icon"><mms-icon name="chat" size="md"></mms-icon></span>
+        <div>
+          <p class="contact-item__label">Schedule an assessment by chat</p>
+          <a href="#chat">Click to chat</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <span class="contact-item__icon"><mms-icon name="phone" size="md"></mms-icon></span>
+        <div>
+          <p class="contact-item__label">Schedule an assessment by phone</p>
+          <a href="tel:212-908-6671">Call us at 212-908-6671</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-assessments">
+    <h3>About comprehensive assessments</h3>
+    <p>The Office for People With Developmental Disabilities (OPWDD) offers services to people with intellectual and developmental disabilities.</p>
+    <p>The Child and Adolescent Needs and Strengths Assessment (CANS) and the Coordinated Assessment System (CAS) are required assessments. New York State uses a person-centered approach to assess the unique health and support needs of people with developmental disabilities.</p>
+    <p>Everyone who is eligible for OPWDD services needs to complete a CANS or CAS. The assessment is used to make sure services match a person's needs and interests.</p>
+  </section>
+
+  <hr class="divider">
+
+  <section class="info-block">
+    <img src="assets/cans-photo.jpg" alt="" class="info-block__img">
+    <div class="info-block__content">
+      <h3>What is CANS</h3>
+      <ul>
+        <li>The CANS assessment is required for children and adolescents ages 17 and younger.</li>
+        <li>OPWDD uses the CANS as the person-centered, consensus-based functional needs assessment.</li>
+        <li>The CANS is designed to give a profile of the specific current needs and strengths of the child or adolescent and caregivers.</li>
+        <li>The CANS provides important information to the child's or adolescent's Care Manager or those responsible for maintaining the care plan.</li>
+      </ul>
+      <a href="#cans">To learn more, go to CANS &gt;&gt;</a>
+      <a href="form-one.html" class="info-block__button">
+        <mms-button label="Schedule a CANS assessment" variant="primary" color-scheme="primary" size="md"></mms-button>
+      </a>
+    </div>
+  </section>
+
+  <section class="info-block">
+    <img src="assets/cas-photo.jpg" alt="" class="info-block__img">
+    <div class="info-block__content">
+      <h3>What is CAS</h3>
+      <ul>
+        <li>The CAS assessment is required for adults ages 18 and older.</li>
+        <li>OPWDD uses the CAS to learn about the support and care a person needs.</li>
+      </ul>
+      <a href="#cas">To learn more, go to CAS &gt;&gt;</a>
+      <a href="form-two.html" class="info-block__button">
+        <mms-button label="Schedule a CAS assessment" variant="primary" color-scheme="primary" size="md"></mms-button>
+      </a>
+    </div>
+  </section>
+
+  <hr class="divider">
+</main>
+
+<footer class="site-footer">
+  <p>Schedule an assessment by chat or phone at <a href="tel:212-908-6671">212-908-6671</a></p>
+  <a href="#privacy" class="site-footer__privacy">Privacy statement</a>
+  <img src="assets/logo-maximus.png" alt="Maximus" class="site-footer__logo">
+</footer>
+
+<button type="button" class="cookie-fab" aria-label="Cookie preferences">
+  <mms-icon name="cookie" size="lg"></mms-icon>
+</button>
+
+<button type="button" class="chat-fab" aria-label="Open chat">
+  <mms-icon name="chat" size="lg"></mms-icon>
+</button>
+
+</body>
+</html>
