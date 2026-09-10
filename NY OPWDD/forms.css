@@ -116,6 +116,9 @@ mms-breadcrumbs { margin-bottom: 1rem; }
 .inline-error { display: block; margin-top: 0.4rem; color: #aa010e; font-size: 0.9rem; font-weight: 400; }
 .native-text-input { width: 100%; min-height: 3rem; padding: 0.7rem 0.85rem; color: var(--maximus-ink); background: var(--maximus-surface); border: 1px solid var(--maximus-line); border-radius: 0.2rem; font: inherit; }
 .conditional-contact-field { margin-top: 1rem; }
+.contact-choice-group { display: block; max-width: 30rem; }
+.contact-choice-group .conditional-contact-field { margin: 0.75rem 0 1.5rem; padding-left: 1.85rem; }
+.contact-choice-group .conditional-contact-field:last-child { margin-bottom: 0; }
 .native-select { width: 100%; min-height: 3rem; padding: 0.7rem 0.85rem; color: var(--maximus-ink); background: var(--maximus-surface); border: 1px solid var(--maximus-line); border-radius: 0.2rem; font: inherit; }
 .native-text-input:focus-visible, .native-select:focus-visible, textarea:focus-visible { outline: 0.2rem solid var(--maximus-primary); outline-offset: 0.1rem; }
 .choice-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 2rem; margin: 0; padding: 0; border: 0; }
@@ -131,8 +134,8 @@ mms-breadcrumbs { margin-bottom: 1rem; }
 .child-caregivers-grid .caregiver-list { display: contents; }
 .child-caregivers-grid .child-fields,
 .child-caregivers-grid .caregiver-row { display: grid; grid-template-columns: subgrid; grid-column: 1 / -1; gap: 1rem; }
+.child-caregivers-grid .caregiver-row + .caregiver-row { margin-top: 0.5rem; }
 .add-caregiver { width: fit-content; padding: 0.65rem 0; color: var(--maximus-primary); background: transparent; border: 0; font: inherit; font-weight: 800; cursor: pointer; }
-#add-caregiver { margin-top: 1rem; }
 .interpreter-row { display: grid; grid-template-columns: 0.8fr 2fr; align-items: end; gap: 2rem; }
 .cans-interpreter-row { display: block; }
 .cans-interpreter-row #interpreter-language-field { margin-top: 1rem; }
@@ -150,6 +153,9 @@ textarea { width: 100%; margin-top: 0.5rem; padding: 0.75rem; border: 1px solid 
 .method-panel-purple input { accent-color: var(--maximus-primary); }
 .assessment-method-choices { margin-bottom: 1rem; }
 .conditional-method-fields { margin-top: 1rem; }
+.method-choice-group { display: block; }
+.method-choice-group .conditional-method-fields { margin: 0.75rem 0 1.5rem; padding-left: 1.85rem; }
+.method-choice-group .conditional-method-fields:last-child { margin-bottom: 0; }
 .cans-in-person-fields .address-grid mms-text-field:last-child { grid-column: 1 / 2; }
 .cas-in-person-fields .address-grid mms-text-field:last-child { grid-column: 1 / 2; }
 .address-grid { gap: 0.8rem; }

@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../node_modules/@mms/design-system/dist/styles/tokens-semantic.css">
     <link rel="stylesheet" href="../node_modules/@mms/design-system/dist/themes/maximus.css">
     <link rel="stylesheet" href="styles.css?v=1">
-    <link rel="stylesheet" href="forms.css?v=4">
+    <link rel="stylesheet" href="forms.css?v=5">
     <script type="module" src="../node_modules/@mms/design-system/dist/standalone.js"></script>
   </head>
   <body>
@@ -50,7 +50,7 @@
           <div class="field-grid child-fields">
             <mms-text-field label="First and last name" name="individual-name" required></mms-text-field>
             <mms-text-field label="TABS ID (optional)" name="tabs-id"></mms-text-field>
-            <mms-text-field label="Date of birth" placeholder="MM/DD/YYYY" name="date-of-birth" required></mms-text-field>
+            <mms-text-field label="Date of birth" name="date-of-birth" type="date" required></mms-text-field>
           </div>
           <p class="caregivers-heading">Child's caregivers</p>
           <div class="caregiver-list" id="caregiver-list">
@@ -59,8 +59,12 @@
               <mms-text-field label="Email address" name="caregiver-email[]" type="email"></mms-text-field>
               <mms-text-field label="Phone number" name="caregiver-phone[]" type="tel"></mms-text-field>
             </div>
+            <div class="caregiver-row">
+              <mms-text-field label="First and last name" name="caregiver-name[]"></mms-text-field>
+              <mms-text-field label="Email address" name="caregiver-email[]" type="email"></mms-text-field>
+              <mms-text-field label="Phone number" name="caregiver-phone[]" type="tel"></mms-text-field>
+            </div>
           </div>
-          <mms-button id="add-caregiver" variant="ghost" label="+ Add another caregiver"></mms-button>
         </section>
 
         <section class="form-section form-card">
@@ -74,18 +78,18 @@
 
         <section class="form-section form-card">
           <div class="section-heading"><h2>5. Preferred contact information</h2></div>
-          <mms-radio-group name="preferred-contact" orientation="horizontal" required>
+          <mms-radio-group class="contact-choice-group" name="preferred-contact" orientation="vertical" required>
             <mms-radio value="phone" label="Phone"></mms-radio>
+            <div class="conditional-contact-field" id="phone-contact-field">
+              <label class="native-field-label" for="phone">Enter phone number</label>
+              <input class="native-text-input" id="phone" name="phone" type="tel" placeholder="Enter phone number" />
+            </div>
             <mms-radio value="email" label="Email"></mms-radio>
+            <div class="conditional-contact-field" id="email-contact-field">
+              <label class="native-field-label" for="email">Enter email address</label>
+              <input class="native-text-input" id="email" name="email" type="email" placeholder="Enter email address" />
+            </div>
           </mms-radio-group>
-          <div class="conditional-contact-field" id="phone-contact-field" hidden>
-            <label class="native-field-label" for="phone">Enter phone number</label>
-            <input class="native-text-input" id="phone" name="phone" type="tel" placeholder="Enter phone number" />
-          </div>
-          <div class="conditional-contact-field" id="email-contact-field" hidden>
-            <label class="native-field-label" for="email">Enter email address</label>
-            <input class="native-text-input" id="email" name="email" type="email" placeholder="Enter email address" />
-          </div>
         </section>
 
         <section class="form-section form-card form-card-wide">
@@ -95,8 +99,8 @@
               <mms-radio value="yes" label="Yes"></mms-radio>
               <mms-radio value="no" label="No"></mms-radio>
             </mms-radio-group>
-            <div id="interpreter-language-field" hidden>
-              <mms-text-field label="Please provide the language (including Sign Language)" name="interpreter-language"></mms-text-field>
+            <div id="interpreter-language-field">
+              <mms-text-field label="If yes, please provide the language (including sign language)" name="interpreter-language"></mms-text-field>
             </div>
           </div>
         </section>
@@ -128,24 +132,24 @@
 
         <section class="form-section form-card">
           <div class="section-heading"><h2>8. How would you like to complete the CANS assessment?</h2></div>
-          <mms-radio-group name="assessment-method" orientation="horizontal" required>
+          <mms-radio-group class="method-choice-group" name="assessment-method" orientation="vertical" required>
             <mms-radio value="in-person" label="In-person assessment"></mms-radio>
-            <mms-radio value="telehealth" label="Telehealth assessment"></mms-radio>
-          </mms-radio-group>
-          <div class="conditional-method-fields cans-in-person-fields" id="in-person-fields" hidden>
-            <div class="address-grid">
-              <mms-text-field label="Assessment address" name="assessment-address"></mms-text-field>
-              <mms-text-field label="Apartment or unit" name="assessment-unit"></mms-text-field>
-              <mms-text-field label="City" name="assessment-city"></mms-text-field>
-              <mms-text-field label="State" name="assessment-state"></mms-text-field>
-              <mms-text-field label="ZIP code" name="assessment-zip"></mms-text-field>
-              <mms-text-field label="Phone number" name="assessment-phone" type="tel"></mms-text-field>
+            <div class="conditional-method-fields cans-in-person-fields" id="in-person-fields">
+              <div class="address-grid">
+                <mms-text-field label="Assessment address" name="assessment-address"></mms-text-field>
+                <mms-text-field label="Apartment or unit" name="assessment-unit"></mms-text-field>
+                <mms-text-field label="City" name="assessment-city"></mms-text-field>
+                <mms-text-field label="State" name="assessment-state"></mms-text-field>
+                <mms-text-field label="ZIP code" name="assessment-zip"></mms-text-field>
+                <mms-text-field label="Phone number" name="assessment-phone" type="tel"></mms-text-field>
+              </div>
             </div>
-          </div>
-          <div class="conditional-method-fields" id="telehealth-fields" hidden>
-            <mms-text-field label="Email address to receive the Zoom link" name="zoom-email" type="email"></mms-text-field>
-            <p class="field-note">Telehealth requirements: laptop/computer, smartphone, or tablet with camera.</p>
-          </div>
+            <mms-radio value="telehealth" label="Telehealth assessment"></mms-radio>
+            <div class="conditional-method-fields" id="telehealth-fields">
+              <mms-text-field label="Email address to receive the Zoom link" name="zoom-email" type="email"></mms-text-field>
+              <p class="field-note">Telehealth requirements: laptop/computer, smartphone, or tablet with camera.</p>
+            </div>
+          </mms-radio-group>
         </section>
 
         <section class="form-section form-card form-card-wide next-steps">
@@ -199,43 +203,20 @@
         otherInput.required = showOther;
       });
 
-      document.querySelector('#add-caregiver').addEventListener('click', function () {
-        const caregiverList = document.querySelector('#caregiver-list');
-        const caregiverNumber = caregiverList.children.length + 1;
-        const caregiverRow = document.createElement('div');
-        caregiverRow.className = 'caregiver-row';
-        caregiverRow.innerHTML = '<mms-text-field label="First and last name" name="caregiver-name[]"></mms-text-field><mms-text-field label="Email address" name="caregiver-email[]" type="email"></mms-text-field><mms-text-field label="Phone number" name="caregiver-phone[]" type="tel"></mms-text-field><mms-button class="remove-caregiver" variant="ghost" label="Remove" aria-label="Remove caregiver ' + caregiverNumber + '"></mms-button>';
-        caregiverList.appendChild(caregiverRow);
-        hideRequiredIndicators(caregiverRow);
-        caregiverRow.querySelector('.remove-caregiver').addEventListener('click', function () {
-          caregiverRow.remove();
-        });
-      });
-
       document.querySelector('mms-radio-group[name="preferred-contact"]').addEventListener('change', function (event) {
-        const showPhone = event.detail.value === 'phone';
-        const phoneField = document.querySelector('#phone');
-        const emailField = document.querySelector('#email');
-        document.querySelector('#phone-contact-field').hidden = !showPhone;
-        document.querySelector('#email-contact-field').hidden = showPhone;
-        phoneField.required = showPhone;
-        emailField.required = !showPhone;
+        const usePhone = event.detail.value === 'phone';
+        document.querySelector('#phone').required = usePhone;
+        document.querySelector('#email').required = !usePhone;
       });
 
       document.querySelector('mms-radio-group[name="interpreter-required"]').addEventListener('change', function (event) {
-        const showLanguage = event.detail.value === 'yes';
-        const languageField = document.querySelector('#interpreter-language-field');
-        const languageInput = languageField.querySelector('mms-text-field');
-        languageField.hidden = !showLanguage;
-        languageInput.required = showLanguage;
+        document.querySelector('#interpreter-language-field mms-text-field').required = event.detail.value === 'yes';
       });
 
       document.querySelector('mms-radio-group[name="assessment-method"]').addEventListener('change', function (event) {
         const showInPerson = event.detail.value === 'in-person';
         const inPersonFields = document.querySelector('#in-person-fields');
         const telehealthFields = document.querySelector('#telehealth-fields');
-        inPersonFields.hidden = !showInPerson;
-        telehealthFields.hidden = showInPerson;
         inPersonFields.querySelectorAll('mms-text-field').forEach(function (field) {
           field.required = showInPerson && field.name === 'assessment-address';
         });
