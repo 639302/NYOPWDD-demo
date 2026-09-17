@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../node_modules/@mms/design-system/dist/styles/tokens-semantic.css">
     <link rel="stylesheet" href="../node_modules/@mms/design-system/dist/themes/maximus.css">
     <link rel="stylesheet" href="styles.css?v=1">
-    <link rel="stylesheet" href="forms.css?v=5">
+    <link rel="stylesheet" href="forms.css?v=13">
     <script type="module" src="../node_modules/@mms/design-system/dist/standalone.js"></script>
   </head>
   <body>
@@ -25,20 +25,25 @@
       <mms-breadcrumbs items='[{"label":"Home","href":"./index.html"},{"label":"CANS assessment"}]'></mms-breadcrumbs>
       <section class="form-intro" aria-labelledby="page-title">
         <h1 class="cans-page-title" id="page-title">CANS assessment appointment request</h1>
-        <p>Thanks for choosing to schedule a CANS assessment. Complete the information below, and you'll receive an email receipt within one business day.</p>
-        <p class="required-fields-note"><strong>Please note:</strong> The person needing the CANS assessment must be 17 or younger. All fields are required unless marked as optional.</p>
+        <p>Complete this form to request a Child and Adolescent Needs and Strengths (CANS) assessment appointment for children aged 17 or younger. You will get an email receipt from Maximus within 1 business day of this request. Your information is secure and will only be used to schedule your CANS assessment.</p>
+        <p><strong>Disclaimer:</strong> Completion of this form does not guarantee or confirm an appointment.</p>
+        <p><strong>Pre-submission verification:</strong> Before submitting a request, confirm that the person is currently assigned for assessment with Maximus by following up with the Care Manager, CCO/DDRO or through the OPWDD Choices system. An appointment will not be scheduled for a person not assigned to Maximus.</p>
+        <p class="required-fields-note">Fields marked with an asterisk (*) are required.</p>
       </section>
 
       <form class="form-shell reference-form cans-form" action="./cans-success.html" method="get" novalidate>
         <section class="form-section form-card">
           <div class="section-heading"><h2>1. Requestor information</h2></div>
-          <label class="native-field-label" for="requestor-name">First and last name</label>
-          <input class="native-text-input" id="requestor-name" name="requestor-name" type="text" placeholder="Enter requestor first and last name" required />
-        </section>
-
-        <section class="form-section form-card">
-          <div class="section-heading"><h2>2. Relationship to the individual participating in the assessment</h2></div>
-          <mms-select id="relationship" name="relationship" label="Relationship to the individual" placeholder="Please make a selection" required options='[{"value":"self","label":"Self"},{"value":"parent","label":"Parent"},{"value":"guardian","label":"Guardian"},{"value":"care-manager","label":"Care manager"},{"value":"family-member","label":"Family member"},{"value":"residential-provider","label":"Residential provider"},{"value":"other","label":"Other"}]'></mms-select>
+          <div class="field-stack">
+            <div class="field-row">
+              <mms-text-field label="First and last name" name="requestor-name" required></mms-text-field>
+              <mms-select id="relationship" name="relationship" label="Relationship to person who needs the assessment" placeholder="Please make a selection" required options='[{"value":"self","label":"Self"},{"value":"parent","label":"Parent"},{"value":"guardian","label":"Guardian"},{"value":"care-manager","label":"Care manager"},{"value":"family-member","label":"Family member"},{"value":"residential-provider","label":"Residential provider"},{"value":"other","label":"Other"}]'></mms-select>
+            </div>
+            <div class="field-row">
+              <mms-text-field label="Phone number" name="requestor-phone" type="tel" required></mms-text-field>
+              <mms-text-field label="Email address" name="requestor-email" type="email" required></mms-text-field>
+            </div>
+          </div>
           <div class="conditional-contact-field" id="other-relationship-field" hidden>
             <label class="native-field-label" for="other-relationship">Other relationship</label>
             <input class="native-text-input" id="other-relationship" name="other-relationship" type="text" placeholder="Enter relationship" />
@@ -46,13 +51,14 @@
         </section>
 
         <section class="form-section form-card child-caregivers-grid">
-          <div class="section-heading"><h2>3. The child or adolescent needing the assessment</h2></div>
-          <div class="field-grid child-fields">
+          <div class="section-heading"><h2>2. Person who needs the assessment</h2></div>
+          <div class="field-row child-fields">
             <mms-text-field label="First and last name" name="individual-name" required></mms-text-field>
-            <mms-text-field label="TABS ID (optional)" name="tabs-id"></mms-text-field>
             <mms-text-field label="Date of birth" name="date-of-birth" type="date" required></mms-text-field>
+            <mms-text-field label="TABS ID (optional)" name="tabs-id"></mms-text-field>
           </div>
           <p class="caregivers-heading">Child's caregivers</p>
+          <p class="caregivers-intro">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
           <div class="caregiver-list" id="caregiver-list">
             <div class="caregiver-row">
               <mms-text-field label="First and last name" name="caregiver-name[]"></mms-text-field>
@@ -64,50 +70,44 @@
               <mms-text-field label="Email address" name="caregiver-email[]" type="email"></mms-text-field>
               <mms-text-field label="Phone number" name="caregiver-phone[]" type="tel"></mms-text-field>
             </div>
+            <div class="caregiver-row">
+              <mms-text-field label="First and last name" name="caregiver-name[]"></mms-text-field>
+              <mms-text-field label="Email address" name="caregiver-email[]" type="email"></mms-text-field>
+              <mms-text-field label="Phone number" name="caregiver-phone[]" type="tel"></mms-text-field>
+            </div>
           </div>
         </section>
 
         <section class="form-section form-card">
-          <div class="section-heading"><h2>4. Care management information</h2></div>
+          <div class="section-heading"><h2>3. Care management information</h2></div>
           <div class="field-stack">
-            <mms-text-field label="Name of Care Coordination Organization (CCO)" name="cco-name" required></mms-text-field>
-            <mms-text-field label="Name of care manager" name="care-manager-name" required></mms-text-field>
-            <mms-text-field label="Care manager email address (if available)" name="care-manager-email" type="email"></mms-text-field>
+            <div class="field-row">
+              <mms-select id="cco-name" name="cco-name" label="Care Coordination Organization (CCO) name" placeholder="Please make a selection" required options='[{"value":"advance-care-alliance","label":"Advance Care Alliance (ACA/NY)"},{"value":"care-design-ny","label":"Care Design NY"},{"value":"lifeplan-cco-ny","label":"LIFEPlan CCO NY"},{"value":"person-centered-services","label":"Person Centered Services"},{"value":"prime-care-coordination","label":"Prime Care Coordination"},{"value":"southern-tier-connect","label":"Southern Tier Connect"},{"value":"tri-county-care","label":"Tri-County Care"},{"value":"na","label":"N/A"}]'></mms-select>
+            </div>
+            <div class="field-row">
+              <mms-text-field label="Care manager first and last name" name="care-manager-name" required></mms-text-field>
+              <mms-text-field label="Care manager email address" name="care-manager-email" type="email"></mms-text-field>
+            </div>
           </div>
-        </section>
-
-        <section class="form-section form-card">
-          <div class="section-heading"><h2>5. Preferred contact information</h2></div>
-          <mms-radio-group class="contact-choice-group" name="preferred-contact" orientation="vertical" required>
-            <mms-radio value="phone" label="Phone"></mms-radio>
-            <div class="conditional-contact-field" id="phone-contact-field">
-              <label class="native-field-label" for="phone">Enter phone number</label>
-              <input class="native-text-input" id="phone" name="phone" type="tel" placeholder="Enter phone number" />
-            </div>
-            <mms-radio value="email" label="Email"></mms-radio>
-            <div class="conditional-contact-field" id="email-contact-field">
-              <label class="native-field-label" for="email">Enter email address</label>
-              <input class="native-text-input" id="email" name="email" type="email" placeholder="Enter email address" />
-            </div>
-          </mms-radio-group>
         </section>
 
         <section class="form-section form-card form-card-wide">
-          <div class="section-heading"><h2>6. Is an interpreter required?</h2></div>
+          <div class="section-heading"><h2>4. Is an interpreter required?<span class="required-mark">*</span></h2></div>
           <div class="interpreter-row cans-interpreter-row">
             <mms-radio-group name="interpreter-required" orientation="horizontal" required>
               <mms-radio value="yes" label="Yes"></mms-radio>
               <mms-radio value="no" label="No"></mms-radio>
             </mms-radio-group>
-            <div id="interpreter-language-field">
+            <div class="field-row" id="interpreter-language-field">
               <mms-text-field label="If yes, please provide the language (including sign language)" name="interpreter-language"></mms-text-field>
             </div>
           </div>
         </section>
 
         <section class="form-section form-card">
-          <div class="section-heading"><h2>7. Appointment preferences</h2></div>
-          <mms-checkbox-group name="preferred-days" label="Preferred day(s) of the week (check all that apply):">
+          <div class="section-heading"><h2>5. Appointment preferences</h2></div>
+          <p class="field-note">You must select at least two days. Your preferred day and time are requests. We will schedule your appointment based on assessor's availability.</p>
+          <mms-checkbox-group name="preferred-days" orientation="horizontal" required data-min-checked="2" data-error-message="Choose at least 2 preferred days of the week." label="Preferred days of the week (check all that apply):">
             <mms-checkbox checked-value="monday" label="Monday"></mms-checkbox>
             <mms-checkbox checked-value="tuesday" label="Tuesday"></mms-checkbox>
             <mms-checkbox checked-value="wednesday" label="Wednesday"></mms-checkbox>
@@ -116,56 +116,57 @@
             <mms-checkbox checked-value="saturday" label="Saturday"></mms-checkbox>
             <mms-checkbox checked-value="sunday" label="Sunday"></mms-checkbox>
           </mms-checkbox-group>
-          <mms-radio-group name="preferred-time" label="Preferred time of day (select one):" orientation="horizontal" required>
-            <mms-radio value="morning" label="Morning (AM)"></mms-radio>
-            <mms-radio value="afternoon" label="Afternoon (PM)"></mms-radio>
-            <mms-radio value="evening" label="Evening 4-7 PM"></mms-radio>
-          </mms-radio-group>
-          <p class="field-note"><strong>Please note:</strong> Your preferred day and time are requests. Your appointment will be scheduled based on assessor availability.</p>
-          <p class="field-note child-presence-note">Please note: child participation is encouraged, but not mandatory during the assessment.</p>
+          <mms-checkbox-group name="preferred-time" orientation="horizontal" required data-min-checked="1" data-error-message="Choose at least 1 preferred time of day." label="Preferred time of day (check all that apply):">
+            <mms-checkbox checked-value="morning" label="Morning (8:30 am -12 pm)"></mms-checkbox>
+            <mms-checkbox checked-value="afternoon" label="Afternoon (12-4 pm)"></mms-checkbox>
+            <mms-checkbox checked-value="evening" label="Evening (4-7 pm)"></mms-checkbox>
+          </mms-checkbox-group>
           <mms-radio-group name="child-present" label="Will the child be present?" orientation="horizontal" required>
             <mms-radio value="yes" label="Yes"></mms-radio>
             <mms-radio value="no" label="No"></mms-radio>
           </mms-radio-group>
-          <mms-text-area label="Additional info (i.e.: Any dates unavailable? Assessor gender preference? Pets?) Include below" name="additional-info" rows="4"></mms-text-area>
         </section>
 
         <section class="form-section form-card">
-          <div class="section-heading"><h2>8. How would you like to complete the CANS assessment?</h2></div>
+          <div class="section-heading"><h2>6. How would you like to complete the CANS assessment?<span class="required-mark">*</span></h2></div>
           <mms-radio-group class="method-choice-group" name="assessment-method" orientation="vertical" required>
+            <mms-radio value="telehealth" label="Telehealth assessment"></mms-radio>
+            <div class="conditional-method-fields" id="telehealth-fields">
+              <div class="field-row">
+                <mms-text-field label="Email address to receive the Zoom link" name="zoom-email" type="email"></mms-text-field>
+              </div>
+              <p class="field-note">Telehealth requirements: laptop/computer, smartphone, or tablet with camera.</p>
+            </div>
             <mms-radio value="in-person" label="In-person assessment"></mms-radio>
             <div class="conditional-method-fields cans-in-person-fields" id="in-person-fields">
               <div class="address-grid">
-                <mms-text-field label="Assessment address" name="assessment-address"></mms-text-field>
-                <mms-text-field label="Apartment or unit" name="assessment-unit"></mms-text-field>
-                <mms-text-field label="City" name="assessment-city"></mms-text-field>
-                <mms-text-field label="State" name="assessment-state"></mms-text-field>
-                <mms-text-field label="ZIP code" name="assessment-zip"></mms-text-field>
-                <mms-text-field label="Phone number" name="assessment-phone" type="tel"></mms-text-field>
+                <mms-text-field class="address-half" label="Assessment address" name="assessment-address"></mms-text-field>
+                <mms-text-field class="address-half" label="Address line 2 (apartment or unit)" name="assessment-unit"></mms-text-field>
+                <mms-text-field class="address-third" label="City" name="assessment-city"></mms-text-field>
+                <mms-text-field class="address-third" label="State" name="assessment-state"></mms-text-field>
+                <mms-text-field class="address-third" label="ZIP code" name="assessment-zip"></mms-text-field>
+                <mms-text-field class="address-half" label="Phone number" name="assessment-phone" type="tel"></mms-text-field>
+                <mms-text-field class="address-half" label="Additional info" name="additional-info"></mms-text-field>
               </div>
-            </div>
-            <mms-radio value="telehealth" label="Telehealth assessment"></mms-radio>
-            <div class="conditional-method-fields" id="telehealth-fields">
-              <mms-text-field label="Email address to receive the Zoom link" name="zoom-email" type="email"></mms-text-field>
-              <p class="field-note">Telehealth requirements: laptop/computer, smartphone, or tablet with camera.</p>
             </div>
           </mms-radio-group>
         </section>
 
         <section class="form-section form-card form-card-wide next-steps">
           <div>
-            <h2>What happens next?</h2>
-            <h3>Step 1 - Request received</h3><p>The Maximus CANS scheduling team will reply within 24 hours to acknowledge receipt of your request.</p>
-            <h3>Step 2 - Appointment confirmation</h3><p>A CANS scheduler will confirm your appointment by email within three business days or request additional information, if needed.</p>
-            <h3>Step 3 - Confirmation email</h3><p>Once scheduled, you and your care manager will receive a confirmation email from Maximus with the appointment details.</p>
+            <h2>Next steps</h2>
+            <h3>Step 1 - Request received</h3><p>The Maximus CANS scheduling team will reply within 1 business day to tell you we got your request.</p>
+            <h3>Step 2 - Appointment confirmation</h3><p>A CANS scheduler will confirm your appointment by email within 3 business days. Or they will request more information, if needed.</p>
+            <h3>Step 3 - Confirmation email</h3><p>Once scheduled, you and your care manager will get a confirmation email from Maximus with the appointment details.</p>
           </div>
           <div>
             <h2>Important information</h2>
-            <p>If the individual has not been assigned to Maximus for a CANS assessment, the scheduling coordinator will let you know in the email response.</p>
+            <p>If the person has not been assigned to Maximus for a CANS assessment, we will tell you in an email.</p>
             <h3>Need help?</h3><p><strong>212-908-6671</strong><br />Monday-Friday, 8:30 AM-5:30 PM</p>
             <p><a href="https://www.opwddassessment.com">www.opwddassessment.com</a></p>
           </div>
-          <mms-checkbox class="privacy-check" field-name="privacy-acknowledgment" required label="I understand that the information I provide will be used for scheduling purposes and stored in Maximus systems in accordance with applicable privacy and security requirements."></mms-checkbox>
+          <mms-checkbox class="privacy-check" data-privacy-link field-name="privacy-acknowledgment" required label="I understand that the information I provide will be used for scheduling purposes and stored in Maximus systems in accordance with applicable privacy and security requirements. Read our Privacy Policy."></mms-checkbox>
+          <mms-checkbox class="privacy-check" field-name="additional-acknowledgment" required label="I confirm that the person is currently assigned for assessment with Maximus."></mms-checkbox>
         </section>
 
         <div class="form-actions">
@@ -177,23 +178,48 @@
     </main>
 
     <script>
-      function hideRequiredIndicators(root) {
-        var tags = ['mms-text-field', 'mms-select', 'mms-radio-group', 'mms-checkbox-group', 'mms-checkbox', 'mms-text-area'];
-        Promise.all(tags.map(function (tag) { return customElements.whenDefined(tag); })).then(function () {
-          root.querySelectorAll(tags.join(', ')).forEach(function (field) {
+      function linkPrivacyPolicy(root) {
+        var linkText = 'Read our Privacy Policy.';
+        customElements.whenDefined('mms-checkbox').then(function () {
+          root.querySelectorAll('mms-checkbox[data-privacy-link]').forEach(function (box) {
             var apply = function () {
-              if (field.shadowRoot && !field.shadowRoot.querySelector('style[data-hide-required]')) {
-                var style = document.createElement('style');
-                style.setAttribute('data-hide-required', '');
-                style.textContent = '.required-indicator { display: none; }';
-                field.shadowRoot.appendChild(style);
+              var label = box.shadowRoot && box.shadowRoot.querySelector('.label');
+              if (!label || label.querySelector('a')) return;
+              var walker = document.createTreeWalker(label, NodeFilter.SHOW_TEXT);
+              var node;
+              while ((node = walker.nextNode())) {
+                var index = node.nodeValue.indexOf(linkText);
+                if (index === -1) continue;
+                var tail = node.splitText(index);
+                tail.nodeValue = tail.nodeValue.slice(linkText.length);
+                var anchor = document.createElement('a');
+                anchor.href = '#privacy';
+                anchor.textContent = linkText;
+                label.insertBefore(anchor, tail);
+                return;
               }
             };
-            field.updateComplete ? field.updateComplete.then(apply) : apply();
+            box.updateComplete ? box.updateComplete.then(apply) : apply();
           });
         });
       }
-      hideRequiredIndicators(document);
+      linkPrivacyPolicy(document);
+
+      function applyHorizontalCheckboxGroups(root) {
+        customElements.whenDefined('mms-checkbox-group').then(function () {
+          root.querySelectorAll('mms-checkbox-group[orientation="horizontal"]').forEach(function (group) {
+            var apply = function () {
+              if (!group.shadowRoot || group.shadowRoot.querySelector('style[data-horizontal]')) return;
+              var style = document.createElement('style');
+              style.setAttribute('data-horizontal', '');
+              style.textContent = '.items-container { flex-direction: row !important; flex-wrap: wrap !important; column-gap: 1rem !important; row-gap: 0.5rem !important; }';
+              group.shadowRoot.appendChild(style);
+            };
+            group.updateComplete ? group.updateComplete.then(apply) : apply();
+          });
+        });
+      }
+      applyHorizontalCheckboxGroups(document);
 
       document.querySelector('#relationship').addEventListener('change', function (event) {
         const showOther = event.target.value === 'other';
@@ -201,12 +227,6 @@
         const otherInput = document.querySelector('#other-relationship');
         otherField.hidden = !showOther;
         otherInput.required = showOther;
-      });
-
-      document.querySelector('mms-radio-group[name="preferred-contact"]').addEventListener('change', function (event) {
-        const usePhone = event.detail.value === 'phone';
-        document.querySelector('#phone').required = usePhone;
-        document.querySelector('#email').required = !usePhone;
       });
 
       document.querySelector('mms-radio-group[name="interpreter-required"]').addEventListener('change', function (event) {
@@ -256,11 +276,26 @@
         return field.matches('mms-text-field, mms-select, mms-text-area, mms-radio-group, mms-checkbox, textarea, input:not([type="radio"]):not([type="checkbox"]):not([type="submit"])');
       }
 
-      function addCansInlineError(field) {
+      function addCansInlineError(field, message) {
         const error = document.createElement('span');
         error.className = 'inline-error';
-        error.textContent = 'This field needs to be filled out.';
+        error.textContent = message || 'This field needs to be filled out.';
         field.insertAdjacentElement('afterend', error);
+      }
+
+      function validateCansCheckboxGroups() {
+        let hasInvalidGroups = false;
+        cansForm.querySelectorAll('mms-checkbox-group[data-min-checked]').forEach(function (group) {
+          const minimum = parseInt(group.dataset.minChecked, 10);
+          const checked = Array.prototype.filter.call(group.querySelectorAll('mms-checkbox'), function (box) {
+            return box.checked;
+          }).length;
+          if (checked < minimum) {
+            hasInvalidGroups = true;
+            addCansInlineError(group, group.dataset.errorMessage);
+          }
+        });
+        return hasInvalidGroups;
       }
 
       function validateCansForm(event) {
@@ -275,6 +310,10 @@
             addCansInlineError(field);
           }
         });
+
+        if (validateCansCheckboxGroups()) {
+          hasInvalidFields = true;
+        }
 
         if (hasInvalidFields) {
           showCansErrorSummary();
